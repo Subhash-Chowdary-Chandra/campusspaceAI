@@ -15,7 +15,7 @@ const [data, sourceHtml, roomRanker] = await Promise.all([
   fs.readFile(path.join(here, 'index.html'), 'utf8'),
   fs.readFile(path.join(here, 'room-ranker.json'), 'utf8').then(JSON.parse)
 ]);
-const indexHtml = sourceHtml.replace('__ROOM_RANKER_MODEL_JSON__', JSON.stringify(roomRanker));
+const indexHtml = sourceHtml.replace("'__ROOM_RANKER_MODEL_JSON__'", JSON.stringify(JSON.stringify(roomRanker)));
 await fs.mkdir(path.dirname(storeFile), { recursive: true });
 let store;
 try { store = JSON.parse(await fs.readFile(storeFile, 'utf8')); }

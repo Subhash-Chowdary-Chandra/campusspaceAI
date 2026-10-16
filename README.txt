@@ -1,5 +1,10 @@
 CampusSpace AI — Live Reservation Prototype
 
+Quick preview
+- The room finder can be opened from index.html for a local, read-only demo. It uses the embedded synthetic dataset and the model fallback in the page.
+- Admin sign-in and live reservations require the Node.js server. Start it with Start_CampusSpace_Live_Prototype.bat and open http://127.0.0.1:4174.
+- A GitHub repository page displays source files; it does not itself host this server-backed application. GitHub Pages alone cannot provide the live reservation API.
+
 Start the service
 1. Install Node.js 18 or newer on the computer that will host the prototype.
 2. Double-click Start_CampusSpace_Live_Prototype.bat.
