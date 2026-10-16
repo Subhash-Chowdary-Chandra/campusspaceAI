@@ -1,0 +1,7 @@
+# Local reservations, admin hashes, and server logs must stay on the host.
+/data/*
+!/data/.gitkeep
+*.log
+*.err.log
+.env
+node_modules/
