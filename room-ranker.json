@@ -1,0 +1,47 @@
+{
+  "name": "CampusSpace Room Fit Ranker",
+  "algorithm": "Ridge Regression, fitted from scratch by a JavaScript normal-equation solver",
+  "target": "synthetic_rubric_fit_score",
+  "featureNames": [
+    "capacitySlackSeats",
+    "weeklyClassHours",
+    "purposeFitBonus"
+  ],
+  "intercept": 65.80267272566196,
+  "coefficients": [
+    -7.598151948488775,
+    -1.1857729554108252,
+    7.615114114271947
+  ],
+  "means": [
+    64.519904073471,
+    61.91323009422329,
+    4.845843070193965
+  ],
+  "scales": [
+    42.21195556148501,
+    9.881441402432639,
+    7.615114166104701
+  ],
+  "labelDefinition": "80 - 0.18 × excess seats - 0.12 × weekly class hours + purpose-fit bonus; hard capacity and equipment constraints are filtered before ranking.",
+  "dataNote": "Training pairs are generated from the supplied synthetic room, schedule and request data. The target is a product rubric, not a real assigned-room or user-preference label.",
+  "training": {
+    "seed": 42,
+    "requestSplit": "80/20 deterministic split by request row; holdout requests are excluded from fitting.",
+    "requestsInSource": 5000,
+    "requestsWithFeasibleRooms": 4900,
+    "trainingPairs": 117817,
+    "holdoutPairs": 28962,
+    "regularization": 0.001,
+    "holdoutMetrics": {
+      "mae": 0,
+      "rmse": 0,
+      "r2": 1
+    },
+    "trainingMeanBaseline": {
+      "mae": 8.53348,
+      "rmse": 10.69994,
+      "r2": -0.00006
+    }
+  }
+}

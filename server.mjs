@@ -10,10 +10,12 @@ const here = path.dirname(fileURLToPath(import.meta.url));
 const host = process.env.HOST || '127.0.0.1';
 const port = Number(process.env.PORT || 4174);
 const storeFile = path.join(here, 'data', 'store.json');
-const [data, indexHtml] = await Promise.all([
+const [data, sourceHtml, roomRanker] = await Promise.all([
   fs.readFile(path.join(here, 'campus-data.json'), 'utf8').then(JSON.parse),
-  fs.readFile(path.join(here, 'index.html'), 'utf8')
+  fs.readFile(path.join(here, 'index.html'), 'utf8'),
+  fs.readFile(path.join(here, 'room-ranker.json'), 'utf8').then(JSON.parse)
 ]);
+const indexHtml = sourceHtml.replace('__ROOM_RANKER_MODEL_JSON__', JSON.stringify(roomRanker));
 await fs.mkdir(path.dirname(storeFile), { recursive: true });
 let store;
 try { store = JSON.parse(await fs.readFile(storeFile, 'utf8')); }
